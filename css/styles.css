@@ -1,0 +1,214 @@
+:root {
+    --bg-color: #0b0c10;
+    --text-color: #c5c6c7;
+    --neon-blue: #45f3ff;
+    --neon-pink: #ff2a7a;
+    --neon-green: #39ff14;
+    --neon-yellow: #fffb00;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(69, 243, 255, 0.3);
+}
+
+.revenue-tracker {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+}
+
+/* Main Content */
+main {
+    flex-grow: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #888;
+    font-size: 1rem;
+}
+
+/* Grid layout for mobile */
+.game-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 600px) {
+    .game-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Game Cards */
+.game-card {
+    text-decoration: none;
+    color: white;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+}
+
+.game-card.neon-blue::before { background: var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue); }
+.game-card.neon-pink::before { background: var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink); }
+.game-card.neon-green::before { background: var(--neon-green); box-shadow: 0 0 15px var(--neon-green); }
+.game-card.neon-yellow::before { background: var(--neon-yellow); box-shadow: 0 0 15px var(--neon-yellow); }
+
+.game-card:active {
+    transform: scale(0.98);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.game-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.game-card p {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Ad Banner Placeholder */
+.ad-banner {
+    background: #1a1a24;
+    border-top: 1px solid #333;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+}
+
+.ad-banner p {
+    font-size: 0.7rem;
+    color: #666;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#click-ad-btn {
+    background: linear-gradient(45deg, #ff9900, #ff5500);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 153, 0, 0.4);
+    transition: transform 0.1s;
+}
+
+#click-ad-btn:active {
+    transform: scale(0.95);
+}
+
+/* Modal for Interstitial Ads */
+.interstitial-ad {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.interstitial-content {
+    background: #222;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid var(--neon-pink);
+    box-shadow: 0 0 20px rgba(255, 42, 122, 0.5);
+    text-align: center;
+    max-width: 80%;
+}
+
+.close-ad-btn {
+    margin-top: 2rem;
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+}

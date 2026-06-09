@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vector Defense</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        body { margin: 0; overflow: hidden; background: #0b0c10; touch-action: none; }
+        #game-canvas { display: block; }
+        .ui-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .top-bar { display: flex; justify-content: space-between; padding: 1rem; color: #fff; pointer-events: auto;}
+        .money-display { font-size: 1.2rem; color: var(--neon-yellow); text-shadow: 0 0 10px var(--neon-yellow); }
+        .health-display { font-size: 1.2rem; color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); }
+        .back-btn { color: white; text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid var(--neon-yellow);}
+        
+        #instruction { position: absolute; bottom: 20px; width: 100%; text-align: center; color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); font-weight: bold; pointer-events: none; }
+        
+        #game-over-screen {
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); flex-direction: column; justify-content: center; align-items: center; pointer-events: auto; z-index: 10;
+        }
+        #game-over-screen h1 { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); font-size: 3rem; margin-bottom: 1rem; }
+        .btn { background: transparent; border: 2px solid var(--neon-yellow); color: var(--neon-yellow); padding: 1rem 2rem; font-size: 1.2rem; border-radius: 30px; cursor: pointer; box-shadow: 0 0 10px var(--neon-yellow); transition: all 0.2s; margin: 0.5rem; text-transform: uppercase; font-weight: bold;}
+        .btn:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+    <canvas id="game-canvas"></canvas>
+    
+    <div class="ui-layer">
+        <div class="top-bar">
+            <a href="../../index.html" class="back-btn">&lt; Hub</a>
+            <div class="health-display">HP: <span id="health">20</span></div>
+            <div class="money-display">$$ <span id="money">150</span></div>
+        </div>
+        <div id="instruction">Tap empty space to build tower ($50)</div>
+    </div>
+
+    <div id="game-over-screen">
+        <h1>DEFENSE BREACHED</h1>
+        <p style="color:white; font-size:1.2rem; margin-bottom:2rem;">Wave Reached: <span id="final-wave">1</span></p>
+        <button class="btn" id="restart-btn">Play Again</button>
+    </div>
+
+    <script src="../../shared/ads.js"></script>
+    <script src="../../shared/vector_renderer.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

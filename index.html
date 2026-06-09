@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vector Play - Game Hub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header with Revenue -->
+        <header>
+            <h1>Vector Play</h1>
+            <div class="revenue-tracker" id="revenue-display">
+                <span class="icon">💰</span> $<span id="revenue-amount">0.00</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <p class="subtitle">Choose your vector adventure.</p>
+            
+            <div class="game-grid">
+                <a href="games/arcade/index.html" class="game-card neon-blue">
+                    <div class="card-icon">🚀</div>
+                    <h2>Vector Runner</h2>
+                    <p>Action / Arcade</p>
+                </a>
+
+                <a href="games/puzzle/index.html" class="game-card neon-pink">
+                    <div class="card-icon">🧩</div>
+                    <h2>Vector Connect</h2>
+                    <p>Puzzle / Logic</p>
+                </a>
+
+                <a href="games/platformer/index.html" class="game-card neon-green">
+                    <div class="card-icon">🏃</div>
+                    <h2>Vector Jump</h2>
+                    <p>Platformer</p>
+                </a>
+
+                <a href="games/defense/index.html" class="game-card neon-yellow">
+                    <div class="card-icon">🛡️</div>
+                    <h2>Vector Defense</h2>
+                    <p>Tower Defense</p>
+                </a>
+            </div>
+        </main>
+
+        <!-- Ad Placeholder -->
+        <div id="ad-container-bottom" class="ad-banner">
+            <p>Advertisement</p>
+            <button id="click-ad-btn">Click Ad to Earn Revenue</button>
+        </div>
+    </div>
+
+    <script src="shared/ads.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
